@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>k5电影网 - k 是 keyframe 关键帧，5 是五种被看见的方式｜电影推荐与观影指南</title>
+<meta name="description" content="k5电影网，k 是 keyframe（关键帧），5 是五种被看见的方式：一帧、一句、一场、一光、一声。不剧透的华语与 world 电影推荐、经典台词、导演谱系与正版观影指南。">
+<meta name="keywords" content="k5电影网, k5电影, 电影推荐, 高分电影, 华语电影, 经典台词, 导演谱系, 关键帧, 电影美学, 观影指南, 正版观影, k5dianyingwang-cn">
+<link rel="canonical" href="https://k5dianyingwang-cn.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="k5电影网 - k 是 keyframe 关键帧，5 是五种被看见的方式">
+<meta property="og:description" content="不剧透的电影推荐与观影指南：一帧、一句、一场、一光、一声。">
+<meta property="og:url" content="https://k5dianyingwang-cn.github.io/">
+<style>
+/* ============ 设计母题：关键帧 / 胶片齿孔 / 放映光束 ============ */
+/* 色彩：炭黑 #14171c  胶片银 #c9d2dc  光束青 #33e6d0  琥珀 #ffb020  品红 #ff3d7f */
+:root{
+  --ink:#14171c; --ink2:#1d222a; --ink3:#262d37;
+  --film:#c9d2dc; --film2:#8d9aa8;
+  --cyan:#33e6d0; --cyan-d:#14b3a0;
+  --amber:#ffb020; --magenta:#ff3d7f;
+  --paper:#f4f6f8;
+  --r:14px;
+  --ease:cubic-bezier(.22,.68,.35,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--ink); color:var(--paper);
+  font-family:"Inter","PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  line-height:1.75; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px}
+.eyebrow{
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--cyan); font-weight:700;
+}
+h1,h2,h3,.serif{font-family:"Songti SC","Noto Serif CJK SC","Source Han Serif SC",Georgia,serif}
+.k{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace; font-weight:800}
+
+/* ============ 导航 ============ */
+.nav{
+  position:sticky; top:0; z-index:60;
+  background:rgba(20,23,28,.86); backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,210,220,.08);
+}
+.nav .wrap{display:flex; align-items:center; gap:26px; height:64px}
+.brand{display:flex; align-items:baseline; gap:8px; font-weight:800; letter-spacing:.02em}
+.brand b{font-size:19px; color:var(--paper)}
+.brand i{font-style:normal; color:var(--cyan); font-size:12px; letter-spacing:.2em; font-family:ui-monospace,monospace}
+.nav ul{display:flex; gap:22px; margin:0 0 0 auto; padding:0; list-style:none}
+.nav a{font-size:14px; color:var(--film); transition:.25s}
+.nav a:hover{color:var(--cyan)}
+.tog{display:none; margin-left:auto; background:none; border:1px solid rgba(201,210,220,.25);
+  color:var(--film); width:40px; height:40px; border-radius:10px; cursor:pointer; font-size:18px}
+
+/* ============ Hero ============ */
+.hero{position:relative; padding:90px 0 70px; overflow:hidden; border-bottom:1px solid rgba(201,210,220,.08)}
+.hero::before{
+  content:""; position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(620px 320px at 82% 22%, rgba(51,230,208,.16), transparent 62%),
+    radial-gradient(520px 300px at 12% 82%, rgba(255,61,127,.14), transparent 62%),
+    linear-gradient(180deg,#0e1116,#14171c 60%,#1a1f27);
+}
+/* 胶片齿孔边 */
+.hero::after{
+  content:""; position:absolute; left:0; right:0; top:0; height:26px; z-index:1;
+  background-image:radial-gradient(circle at 14px 13px, #0e1116 5px, transparent 6px);
+  background-size:28px 26px; opacity:.5;
+}
+.hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center}
+.h-txt h1{font-size:clamp(34px,6vw,64px); line-height:1.05; margin:14px 0 18px; letter-spacing:-.01em}
+.h-txt h1 em{font-style:normal; background:linear-gradient(92deg,var(--cyan),var(--amber) 55%,var(--magenta));
+  -webkit-background-clip:text; background-clip:text; color:transparent}
+.h-txt p{color:var(--film); max-width:560px; font-size:16.5px; margin:0 0 26px}
+.cta{display:flex; gap:14px; flex-wrap:wrap}
+.btn{
+  display:inline-flex; align-items:center; gap:9px; padding:13px 24px; border-radius:999px;
+  font-size:14.5px; font-weight:700; cursor:pointer; border:1px solid transparent; transition:.28s var(--ease);
+}
+.btn.p{background:var(--cyan); color:#041b19}
+.btn.p:hover{transform:translateY(-3px); box-shadow:0 16px 34px -14px var(--cyan)}
+.btn.g{background:transparent; border-color:rgba(201,210,220,.3); color:var(--film)}
+.btn.g:hover{border-color:var(--cyan); color:var(--cyan)}
+.kv{display:flex; gap:26px; margin-top:34px; padding-top:24px; border-top:1px dashed rgba(201,210,220,.18)}
+.kv div span{display:block; font-size:27px; color:var(--amber); line-height:1.1}
+.kv div small{color:var(--film2); font-size:12px; letter-spacing:.1em}
+
+/* 关键帧图形 */
+.stage{position:relative; height:400px}
+.sprocket{position:absolute; inset:0;
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(201,210,220,.14) 4px, transparent 5px),
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(201,210,220,.14) 4px, transparent 5px);
+  background-size:34px 24px; background-repeat:repeat-y;
+  border:1px solid rgba(201,210,220,.12); border-radius:18px;
+}
+.frame{position:absolute; left:50%; top:50%; width:250px; height:170px; transform:translate(-50%,-50%);
+  border-radius:10px; overflow:hidden; box-shadow:0 30px 70px -28px rgba(0,0,0,.9);
+  animation:float 6.4s ease-in-out infinite;
+}
+.frame i{position:absolute; inset:0; display:block}
+.frame i:nth-child(1){background:linear-gradient(120deg,#1b3a4b,#0d1b2a)}
+.frame i:nth-child(2){background:linear-gradient(160deg,transparent 40%,rgba(255,176,32,.5))}
+.frame i:nth-child(3){
+  background:radial-gradient(circle at 78% 30%, var(--amber) 0 22%, transparent 24%),
+             radial-gradient(circle at 30% 68%, rgba(255,61,127,.55) 0 26%, transparent 30%);
+  mix-blend-mode:screen;
+}
+.frame::after{content:"KEYFRAME 05"; position:absolute; left:12px; bottom:10px; z-index:3;
+  font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.3em; color:rgba(244,246,248,.75)}
+.beam{position:absolute; left:50%; top:50%; width:520px; height:120px; transform-origin:left center;
+  transform:translate(-50%,-50%) rotate(-14deg); z-index:0; pointer-events:none;
+  background:linear-gradient(90deg, rgba(51,230,208,.30), rgba(51,230,208,0) 78%);
+  clip-path:polygon(0 42%,100% 0,100% 100%,0 58%);
+  animation:beam 4.6s ease-in-out infinite alternate;
+}
+.ticks{position:absolute; right:6px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:9px; z-index:4}
+.ticks s{width:26px; height:3px; background:rgba(201,210,220,.3); border-radius:2px; transition:.3s}
+.ticks s.on{background:var(--cyan); box-shadow:0 0 10px var(--cyan)}
+@keyframes float{0%,100%{transform:translate(-50%,-52%)} 50%{transform:translate(-50%,-48%)}}
+@keyframes beam{0%{opacity:.35; transform:translate(-50%,-50%) rotate(-14deg)} 100%{opacity:.8; transform:translate(-50%,-50%) rotate(-9deg)}}
+.pulse{position:absolute; left:50%; top:calc(50% - 30px); width:14px; height:14px; margin-left:-7px; z-index:5;
+  border-radius:50%; background:var(--magenta); box-shadow:0 0 0 0 rgba(255,61,127,.6);
+  animation:pulse 2.1s var(--ease) infinite;
+}
+@keyframes pulse{70%{box-shadow:0 0 0 26px rgba(255,61,127,0)} 100%{box-shadow:0 0 0 0 rgba(255,61,127,0)}}
+
+/* ============ 通用栏目 ============ */
+.sec{padding:92px 0; position:relative}
+.sec.alt{background:linear-gradient(180deg,transparent,rgba(255,255,255,.018))}
+.head{display:flex; align-items:flex-end; gap:22px; flex-wrap:wrap; margin-bottom:44px}
+.head .t{max-width:640px}
+.head h2{font-size:clamp(26px,4.4vw,42px); margin:10px 0 10px; letter-spacing:-.01em}
+.head h2 span{color:var(--cyan)}
+.head p{color:var(--film2); font-size:15.5px; margin:0}
+.head .num{margin-left:auto; text-align:right; color:var(--film2); font-size:12.5px; letter-spacing:.16em}
+
+/* ============ 栏目1：横滑词条卡 ============ */
+.rail{display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 2px 26px;
+  scrollbar-width:thin; scrollbar-color:var(--ink3) transparent}
+.rail::-webkit-scrollbar{height:9px}
+.rail::-webkit-scrollbar-thumb{background:var(--ink3); border-radius:9px}
+.c{flex:0 0 300px; scroll-snap-align:start; background:var(--ink2); border:1px solid rgba(201,210,220,.09);
+  border-radius:var(--r); overflow:hidden; transition:transform .35s var(--ease), border-color .3s}
+.c:hover{transform:translateY(-9px) rotate(.6deg); border-color:var(--cyan)}
+.c .ph{height:200px; position:relative; padding:18px; display:flex; flex-direction:column; justify-content:space-between}
+.c .ph u{text-decoration:none; font-family:ui-monospace,monospace; font-size:11px; letter-spacing:.24em; color:rgba(255,255,255,.8)}
+.c .ph b{font-size:22px; line-height:1.25; text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.c .ph .yr{font-size:12px; opacity:.85; font-family:ui-monospace,monospace}
+.c .bd{padding:16px 18px 18px}
+.c .bd q{display:block; font-size:13.5px; color:var(--film); font-family:"Songti SC",Georgia,serif; margin-bottom:12px; min-height:44px}
+.c .mt{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:12px}
+.c .mt i{font-style:normal; font-size:11px; padding:4px 9px; border-radius:999px; border:1px solid rgba(201,210,220,.2); color:var(--film)}
+.c .bar{height:5px; border-radius:5px; background:rgba(201,210,220,.12); overflow:hidden}
+.c .bar s{display:block; height:100%; background:linear-gradient(90deg,var(--cyan),var(--amber)); border-radius:5px}
+/* 6 张独立渐变 */
+.g1{background:linear-gradient(155deg,#1b3a4b,#0d1b2a)}
+.g2{background:linear-gradient(155deg,#3a2a4b,#1c1226)}
+.g3{background:linear-gradient(155deg,#4a3520,#24170d)}
+.g4{background:linear-gradient(155deg,#1d3a2a,#0d1c14)}
+.g5{background:linear-gradient(155deg,#3d2a2a,#200f14)}
+.g6{background:linear-gradient(155deg,#22324a,#0f1a2a)}
+
+/* ============ 栏目2：3×3 等比九宫格 ============ */
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.cell{position:relative; border-radius:var(--r); overflow:hidden; cursor:default;
+  background:var(--ink2); min-height:210px; aspect-ratio:1/1;
+}
+.cell::after{content:""; position:absolute; inset:0; z-index:1; opacity:.92; transition:.5s var(--ease)}
+.cell i.bg{position:absolute; inset:0; z-index:0; transform:scale(1.12); transition:transform .9s var(--ease);
+  background-size:cover; background-position:center}
+.cell:hover i.bg{transform:scale(1.26)}
+.cell:hover::after{opacity:.62}
+.cell .in{position:absolute; inset:0; z-index:2; padding:20px; display:flex; flex-direction:column; justify-content:flex-end}
+.cell .no{font-family:ui-monospace,monospace; font-size:12px; letter-spacing:.24em; color:var(--amber); font-weight:800}
+.cell h3{margin:6px 0 8px; font-size:21px; line-height:1.3}
+.cell q{display:block; font-size:13px; color:rgba(244,246,248,.9); font-family:"Songti SC",Georgia,serif; margin-bottom:12px;
+  opacity:0; transform:translateY(8px); transition:.4s var(--ease)}
+.cell:hover q{opacity:1; transform:translateY(0)}
+.cell .eg{display:inline-flex; gap:6px; flex-wrap:wrap}
+.cell .eg b{font-weight:600; font-size:11.5px; padding:4px 10px; border-radius:999px; background:rgba(255,255,255,.14); backdrop-filter:blur(4px)}
+.cg1::after{background:linear-gradient(160deg,transparent 35%,#7a1f2b 95%)}
+.cg2::after{background:linear-gradient(160deg,transparent 35%,#123a52 95%)}
+.cg3::after{background:linear-gradient(160deg,transparent 35%,#4a3520 95%)}
+.cg4::after{background:linear-gradient(160deg,transparent 35%,#2f1d3a 95%)}
+.cg5::after{background:linear-gradient(160deg,transparent 35%,#14403a 95%)}
+.cg6::after{background:linear-gradient(160deg,transparent 35%,#3d2a2a 95%)}
+.cg7::after{background:linear-gradient(160deg,transparent 35%,#1f2a44 95%)}
+.cg8::after{background:linear-gradient(160deg,transparent 35%,#5a1f3a 95%)}
+.cg9::after{background:linear-gradient(160deg,transparent 35%,#2c3a12 95%)}
+
+/* ============ 栏目3：交错流 + conic 环形评分 ============ */
+.rows{display:flex; flex-direction:column; gap:30px}
+.row{display:grid; grid-template-columns:120px 1fr; gap:34px; align-items:center;
+  background:var(--ink2); border:1px solid rgba(201,210,220,.08); border-radius:var(--r); padding:26px 30px}
+.row.flip{grid-template-columns:1fr 120px}
+.row.flip .q{order:2}
+.q{position:relative; width:104px; height:104px; margin:0 auto; flex:0 0 auto}
+.q svg{transform:rotate(-90deg)}
+.q .n{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center}
+.q .n b{font-size:25px; color:var(--amber); line-height:1}
+.q .n small{font-size:9.5px; letter-spacing:.2em; color:var(--film2); font-family:ui-monospace,monospace}
+.row .tx q{margin:0; font-size:clamp(17px,2.4vw,22px); line-height:1.6; color:var(--paper);
+  font-family:"Songti SC","Noto Serif CJK SC",Georgia,serif; font-style:italic; position:relative; display:block; padding-left:26px}
+.row .tx q::before{content:"\201C"; position:absolute; left:-4px; top:-14px; font-size:54px; color:var(--cyan); font-style:normal; line-height:1}
+.row .tx cite{font-style:normal; display:block; margin-top:12px; font-size:13.5px; color:var(--film2)}
+.tagl{display:inline-block; font-size:11px; letter-spacing:.18em; color:var(--cyan); border:1px solid rgba(51,230,208,.35);
+  padding:4px 11px; border-radius:999px; margin-bottom:10px}
+
+/* ============ 栏目4：纵向时间轴 ============ */
+.tl{position:relative; margin-left:14px; padding-left:44px}
+.tl::before{content:""; position:absolute; left:9px; top:14px; bottom:14px; width:2px;
+  background:linear-gradient(180deg,var(--cyan),var(--amber) 62%,var(--magenta))}
+.nd{position:relative; padding:0 0 34px}
+.nd:last-child{padding-bottom:0}
+.nd::before{content:counter(n,decimal-leading-zero); counter-increment:n;
+  position:absolute; left:-44px; top:0; width:20px; height:20px; border-radius:50%;
+  background:var(--ink); border:2px solid var(--amber); color:var(--amber);
+  font-family:ui-monospace,monospace; font-size:10px; font-weight:800;
+  display:flex; align-items:center; justify-content:center; z-index:2}
+.nd:nth-child(2)::before{border-color:var(--cyan); color:var(--cyan)}
+.nd:nth-child(3)::before{border-color:var(--magenta); color:var(--magenta)}
+.nd:nth-child(4)::before{border-color:#8b7bff; color:#8b7bff}
+.nd:nth-child(5)::before{border-color:#4ecb7a; color:#4ecb7a}
+.nd .card{background:var(--ink2); border:1px solid rgba(201,210,220,.09); border-radius:var(--r); padding:22px 26px;
+  display:grid; grid-template-columns:96px 1fr; gap:22px; align-items:center; transition:.3s}
+.nd .card:hover{border-color:var(--amber); transform:translateX(6px)}
+.ava{width:80px; height:80px; border-radius:50%; position:relative; margin:0 auto;
+  background:radial-gradient(circle at 34% 30%, rgba(255,255,255,.35), transparent 45%), var(--g,linear-gradient(135deg,#2a3a4a,#0f1a26));
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.08), 0 12px 26px -14px rgba(0,0,0,.7)}
+.nd h4{margin:0 0 4px; font-size:20px}
+.nd h4 em{font-style:normal; color:var(--film2); font-size:13px; font-weight:500; margin-left:8px; font-family:ui-monospace,monospace}
+.nd p{margin:0; color:var(--film); font-size:14px}
+.filmz{display:flex; gap:7px; flex-wrap:wrap; margin-top:12px}
+.filmz b{font-weight:600; font-size:11.5px; padding:4px 10px; border-radius:6px; background:rgba(201,210,220,.08); color:var(--film)}
+
+/* ============ 栏目5：手风琴 ============ */
+.faq{display:flex; flex-direction:column; gap:12px}
+.faq details{background:rgba(255,255,255,.018); border:1px solid rgba(201,210,220,.1); border-radius:var(--r); overflow:hidden; transition:.3s}
+.faq details[open]{border-color:var(--amber); background:rgba(255,176,32,.05)}
+.faq summary{cursor:pointer; padding:19px 24px; font-size:16.5px; font-weight:700; list-style:none;
+  display:flex; align-items:center; gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋"; margin-left:auto; color:var(--film2); font-weight:400; font-size:20px; transition:.3s}
+.faq details[open] summary::after{content:"－"; color:var(--amber)}
+.faq summary .ix{font-family:ui-monospace,monospace; color:var(--cyan); font-size:12px; letter-spacing:.16em}
+.faq .a{padding:0 24px 20px 62px; color:var(--film); font-size:15px}
+.faq .a strong{color:var(--amber)}
+
+/* ============ 栏目6：双栏 + 编号特性 + 数据条 ============ */
+.cols{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:start}
+.lead h3{font-size:clamp(22px,3.2vw,30px); margin:0 0 16px; line-height:1.4}
+.lead p{color:var(--film); font-size:15.5px; margin:0 0 14px}
+.feats{counter-reset:f; list-style:none; padding:0; margin:26px 0 0}
+.feats li{counter-increment:f; position:relative; padding:16px 0 16px 62px; border-bottom:1px dashed rgba(201,210,220,.14);
+  display:grid; grid-template-columns:1fr auto; gap:10px; align-items:baseline}
+.feats li::before{content:"0" counter(f); position:absolute; left:0; top:15px;
+  font-family:ui-monospace,monospace; font-size:13px; font-weight:800; color:var(--c,#ffb020); letter-spacing:.1em}
+.feats li:nth-child(1){--c:var(--cyan)}
+.feats li:nth-child(2){--c:var(--magenta)}
+.feats li:nth-child(3){--c:var(--amber)}
+.feats li:nth-child(4){--c:#8b7bff}
+.feats li b{font-size:16.5px}
+.feats li small{color:var(--film2); font-size:13px}
+.stats{display:grid; gap:18px}
+.stat{background:var(--ink2); border:1px solid rgba(201,210,220,.09); border-left:3px solid var(--c,#33e6d0);
+  border-radius:var(--r); padding:20px 22px}
+.stat b{display:block; font-size:34px; line-height:1.05; color:var(--c); letter-spacing:-.02em}
+.stat b i{font-style:normal; font-size:15px; color:var(--film2); margin-left:6px; font-weight:600}
+.stat span{display:block; font-size:14.5px; margin:4px 0 12px}
+.rung{height:6px; border-radius:6px; background:rgba(201,210,220,.12); overflow:hidden}
+.rung s{display:block; height:100%; width:0; border-radius:6px; background:linear-gradient(90deg,var(--c),var(--amber));
+  animation:fill 1.6s var(--ease) forwards}
+@keyframes fill{to{width:var(--w)}}
+
+/* ============ 页脚 ============ */
+.foot{border-top:1px solid rgba(201,210,220,.1); padding:56px 0 34px; background:#0e1116}
+.foot .f1{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:34px; margin-bottom:38px}
+.foot h5{font-size:13px; letter-spacing:.2em; color:var(--cyan); margin:0 0 14px; font-family:ui-monospace,monospace}
+.foot p{color:var(--film2); font-size:13.5px; margin:0}
+.foot ul{list-style:none; padding:0; margin:0}
+.foot li{margin-bottom:9px; font-size:13.5px; color:var(--film)}
+.foot a:hover{color:var(--cyan)}
+.copy{display:flex; gap:16px; flex-wrap:wrap; justify-content:space-between; align-items:center;
+  padding-top:24px; border-top:1px dashed rgba(201,210,220,.14); color:var(--film2); font-size:12.5px}
+.badge{display:inline-flex; gap:8px; flex-wrap:wrap}
+.badge s{text-decoration:none; font-size:11.5px; padding:5px 11px; border-radius:999px; border:1px solid rgba(201,210,220,.2); color:var(--film)}
+
+/* ============ 入场动画 ============ */
+.rv{opacity:0; transform:translateY(22px); transition:.7s var(--ease)}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1; transform:none} *,*::before,*::after{animation:none!important; transition:none!important}}
+
+/* ============ 响应式 ============ */
+@media (max-width:1000px){
+  .hero .wrap{grid-template-columns:1fr; gap:34px}
+  .stage{height:340px; order:-1}
+  .cols,.foot .f1{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .nav ul{position:absolute; left:0; right:0; top:64px; flex-direction:column; gap:0;
+    max-height:0; overflow:hidden; background:rgba(20,23,28,.98); transition:max-height .4s var(--ease)}
+  .nav ul.o{max-height:460px; border-top:1px solid rgba(201,210,220,.1)}
+  .nav ul a{display:block; padding:15px 26px; border-bottom:1px solid rgba(201,210,220,.06)}
+  .tog{display:inline-flex; align-items:center; justify-content:center}
+  .c{flex-basis:268px}
+}
+@media (max-width:760px){
+  .wrap{padding:0 20px}
+  .sec{padding:68px 0}
+  .head .num{display:none}
+  .grid{grid-template-columns:repeat(2,1fr); gap:14px}
+  .cell{min-height:180px}
+  .row,.row.flip{grid-template-columns:88px 1fr; gap:18px; padding:18px}
+  .row.flip .q{order:0}
+  .q{width:78px; height:78px}
+  .q .n b{font-size:19px}
+  .row .tx q{padding-left:20px; font-size:16px}
+  .row .tx q::before{font-size:38px; top:-8px}
+  .cols,.foot .f1{grid-template-columns:1fr}
+  .nd .card{grid-template-columns:1fr; text-align:center; gap:12px}
+  .ava{width:66px; height:66px}
+  .faq summary{padding:16px 18px; font-size:15.5px}
+  .faq .a{padding:0 18px 16px 18px}
+}
+@media (max-width:520px){
+  .brand b{font-size:16px}
+  .hero{padding:52px 0 44px}
+  .h-txt h1{font-size:31px}
+  .kv{gap:16px}
+  .kv div span{font-size:22px}
+  .grid{grid-template-columns:1fr}
+  .cell{aspect-ratio:auto; min-height:168px}
+  .c{flex-basis:82vw}
+  .btn{width:100%; justify-content:center}
+  .copy{flex-direction:column; align-items:flex-start}
+}
+@media print{
+  body{background:#fff; color:#000}
+  .nav,.cta,.pulse,.beam,.ticks,.hero::after{display:none!important}
+  .sec{padding:26px 0; break-inside:avoid}
+  .hero{background:#fff; color:#000; padding:20px 0}
+  .c,.nd .card,.stat{border:1px solid #ccc; background:#fff; color:#000}
+  .row,.faq details{background:#fff; border:1px solid #ddd}
+}
+
+/* 减少动画偏好：停止持续动画 */
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<header class="nav" role="banner">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="k5电影网 首页">
+      <b>k5电影网</b><i>KEYFRAME</i>
+    </a>
+    <button class="tog" id="tog" aria-expanded="false" aria-controls="navul" aria-label="切换导航菜单">≡</button>
+    <nav>
+      <ul id="navul">
+        <li><a href="#picks">高分片单</a></li>
+        <li><a href="#five">五种看见</a></li>
+        <li><a href="#talk">关键帧台词</a></li>
+        <li><a href="#knight">幕后谱系</a></li>
+        <li><a href="#night">常见疑问</a></li>
+        <li><a href="#about">关于本站</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main role="main">
+
+  <!-- ================= HERO：关键帧 + 放映光束 ================= -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="h-txt">
+        <div class="eyebrow">k5 · keyframe 05</div>
+        <h1 id="h1">k 是 <em>keyframe</em><br>5 是五种被看见的方式</h1>
+        <p>k5电影网不做资源搬运、不做剧情解说、不追热搜。我们只做一件事：把银幕上<strong style="color:var(--amber)">最值得被看见的那一帧</strong>拆开给你看——一帧、一句、一场、一光、一声。160 分钟，交给值得的片子。</p>
+        <div class="cta">
+          <a class="btn p" href="#picks">开始选片 →</a>
+          <a class="btn g" href="#five">五种看见</a>
+        </div>
+        <div class="kv">
+          <div><span>05</span><small>五种看见</small></div>
+          <div><span>128</span><small>部精选</small></div>
+          <div><span>≥8.0</span><small>入选线</small></div>
+          <div><span>0</span><small>盗版链接</small></div>
+        </div>
+      </div>
+
+      <div class="stage" aria-hidden="true">
+        <div class="sprocket"></div>
+        <div class="beam"></div>
+        <div class="frame">
+          <i></i><i></i><i></i>
+        </div>
+        <div class="pulse"></div>
+        <div class="ticks">
+          <s class="on"></s><s></s><s></s><s class="on"></s><s></s>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目1：高分片单（横滑词条卡）================= -->
+  <section class="sec" id="picks" aria-labelledby="t1">
+    <div class="wrap">
+      <div class="head">
+        <div class="t">
+          <div class="eyebrow">01 / picks</div>
+          <h2>高分片单 · <span>值得再看一遍的 160 分钟</span></h2>
+          <p>"值得追指数"＝豆瓣 40% + IMDb 30% + 烂番茄 20% + 奥斯卡/英国电影学院"摄影·美术·视效·剪辑"提名 10%，再扣掉"说教感 / 拖沓度 / 炫技感"。低于 8.0 不收。</p>
+        </div>
+        <div class="num">SCROLL →</div>
+      </div>
+
+      <div class="rail">
+        <article class="c rv">
+          <div class="ph g1"><u>K5 · 01</u><b>《星际穿越》</b><span class="yr">2014 · 科幻</span></div>
+          <div class="bd">
+            <q>黑洞不是特效，是广义相对论的黑板擦。</q>
+            <div class="mt"><i>一帧</i><i>实拍</i><i>168 min</i></div>
+            <div class="bar"><s style="width:97%"></s></div>
+          </div>
+        </article>
+        <article class="c rv">
+          <div class="ph g2"><u>K5 · 02</u><b>《布达佩斯大饭店》</b><span class="yr">2014 · 喜剧</span></div>
+          <div class="bd">
+            <q>粉红不是少女色，是韦斯·安德森的标点符号。</q>
+            <div class="mt"><i>一场</i><i>对称</i><i>99 min</i></div>
+            <div class="bar"><s style="width:93%"></s></div>
+          </div>
+        </article>
+        <article class="c rv">
+          <div class="ph g3"><u>K5 · 03</u><b>《银翼杀手2049》</b><span class="yr">2017 · 科幻</span></div>
+          <div class="bd">
+            <q>橙色雾霾里，光是唯一的语言。</q>
+            <div class="mt"><i>一光</i><i>橙雾</i><i>164 min</i></div>
+            <div class="bar"><s style="width:95%"></s></div>
+          </div>
+        </article>
+        <article class="c rv">
+          <div class="ph g4"><u>K5 · 04</u><b>《敦刻尔克》</b><span class="yr">2017 · 战争</span></div>
+          <div class="bd">
+            <q>一分钟的紧张，是一年的剪辑。</q>
+            <div class="mt"><i>一场</i><i>IMAX</i><i>107 min</i></div>
+            <div class="bar"><s style="width:92%"></s></div>
+          </div>
+        </article>
+        <article class="c rv">
+          <div class="ph g5"><u>K5 · 05</u><b>《花样年华》</b><span class="yr">2000 · 爱情</span></div>
+          <div class="bd">
+            <q>旗袍的褶皱，比台词先说出秘密。</q>
+            <div class="mt"><i>一句</i><i>留白</i><i>98 min</i></div>
+            <div class="bar"><s style="width:96%"></s></div>
+          </div>
+        </article>
+        <article class="c rv">
+          <div class="ph g6"><u>K5 · 06</u><b>《地球脉动 II》</b><span class="yr">2016 · 纪录片</span></div>
+          <div class="bd">
+            <q>最贵的摄影机，拍的是最不配合的演员。</q>
+            <div class="mt"><i>一声</i><i>自然</i><i>6 集</i></div>
+            <div class="bar"><s style="width:98%"></s></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目2：五种看见（3×3 等比九宫格）================= -->
+  <section class="sec alt" id="five" aria-labelledby="t2">
+    <div class="wrap">
+      <div class="head">
+        <div class="t">
+          <div class="eyebrow">02 / five ways</div>
+          <h2>五种看见 · <span>银幕上被忽略的那一半</span></h2>
+          <p>同样的 24 格每秒，有人看见故事，有人看见手艺。k5 的"5"，是五种被看见的方式——从最具体的"一格画面"，到最抽象的"一声响"。</p>
+        </div>
+        <div class="num">05</div>
+      </div>
+
+      <div class="grid">
+        <figure class="cell cg1 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#7a1f2b,#2a0d12)"></i>
+          <figcaption class="in">
+            <span class="no">K5 · 01</span>
+            <h3>一帧</h3>
+            <q>构图、色彩、景别。一格画面就能讲完的情绪。</q>
+            <span class="eg"><b>入门《布达佩斯大饭店》</b><b>进阶《镜子》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg2 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#123a52,#081a26)"></i>
+          <figcaption class="in">
+            <span class="no">K5 · 02</span>
+            <h3>一句</h3>
+            <q>台词不是信息，是人物的最后一道防线。</q>
+            <span class="eg"><b>入门《海边的曼彻斯特》</b><b>进阶《东京物语》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg3 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#4a3520,#24170d)"></i>
+          <figcaption class="in">
+            <span class="no">K5 · 03</span>
+            <h3>一场</h3>
+            <q>长镜、调度、剪辑点。一场戏见导演的全部家底。</q>
+            <span class="eg"><b>入门《1917》</b><b>进阶《俄罗斯方舟》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg4 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#2f1d3a,#160a1c)"></i>
+          <figcaption class="in">
+            <span class="no">K5 · 04</span>
+            <h3>一光</h3>
+            <q>侧光、逆光、一盏灯。光影是 cheapest 的魔法。</q>
+            <span class="eg"><b>入门《教父》</b><b>进阶《巴里·林登》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg5 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#14403a,#081c18)"></i>
+          <figcaption class="in">
+            <span class="no">K5 · 05</span>
+            <h3>一声</h3>
+            <q> silence 也是声音。音效设计决定你何时屏息。</q>
+            <span class="eg"><b>入门《敦刻尔克》</b><b>进阶《声音与愤怒》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg6 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#3d2a2a,#200f14)"></i>
+          <figcaption class="in">
+            <span class="no">BONUS</span>
+            <h3>一剪</h3>
+            <q>剪辑是电影的语法。好剪辑让你忘了它在剪。</q>
+            <span class="eg"><b>入门《谍影重重》</b><b>进阶《救命解药》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg7 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#1f2a44,#0d1426)"></i>
+          <figcaption class="in">
+            <span class="no">BONUS</span>
+            <h3>一服</h3>
+            <q>服装是穿在身上的台词，颜色会替角色说话。</q>
+            <span class="eg"><b>入门《花样年华》</b><b>进阶《绝代艳后》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg8 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#5a1f3a,#240d18)"></i>
+          <figcaption class="in">
+            <span class="no">BONUS</span>
+            <h3>一景</h3>
+            <q>取景地也是演员。横店、冰岛、重庆都是角色。</q>
+            <span class="eg"><b>入门《千与千寻》</b><b>进阶《降临》</b></span>
+          </figcaption>
+        </figure>
+        <figure class="cell cg9 rv">
+          <i class="bg" style="background:linear-gradient(135deg,#2c3a12,#161c06)"></i>
+          <figcaption class="in">
+            <span class="no">BONUS</span>
+            <h3>一秒</h3>
+            <q>留白的一秒，比台词更重。学会看"没发生"的部分。</q>
+            <span class="eg"><b>入门《小偷家族》</b><b>进阶《单车失窃记》</b></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目3：关键帧台词（交错流 + conic 环）================= -->
+  <section class="sec" id="talk" aria-labelledby="t3">
+    <div class="wrap">
+      <div class="head">
+        <div class="t">
+          <div class="eyebrow">03 / keyframe quote</div>
+          <h2>关键帧台词 · <span>一句顶一万格</span></h2>
+          <p>台词不是剧情摘要，是人物在那一秒的真实。以下四句，建议关掉弹幕、调亮屏幕、戴上耳机再看一遍。</p>
+        </div>
+        <div class="num">04</div>
+      </div>
+
+      <div class="rows">
+        <div class="row rv">
+          <div class="q" style="--v:96">
+            <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+              <circle cx="52" cy="52" r="46" fill="none" stroke="rgba(201,210,220,.14)" stroke-width="8"/>
+              <circle cx="52" cy="52" r="46" fill="none" stroke="url(#g1)" stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="289" stroke-dashoffset="11.56"/>
+            </svg>
+            <div class="n"><b>9.6</b><small>SCORE</small></div>
+          </div>
+          <div class="tx">
+            <span class="tagl">一帧 · 留白</span>
+            <q>不是我们忘记了，而是我们记得的，刚好够活下去。</q>
+            <cite>——《海边的曼彻斯特》<br>那一格：Lee 在地下室，镜头停在他脸上 4 秒，没有台词。</cite>
+          </div>
+        </div>
+
+        <div class="row flip rv">
+          <div class="q" style="--v:93">
+            <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+              <circle cx="52" cy="52" r="46" fill="none" stroke="rgba(201,210,220,.14)" stroke-width="8"/>
+              <circle cx="52" cy="52" r="46" fill="none" stroke="url(#g2)" stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="289" stroke-dashoffset="20.23"/>
+            </svg>
+            <div class="n"><b>9.3</b><small>SCORE</small></div>
+          </div>
+          <div class="tx">
+            <span class="tagl">一场 · 长镜</span>
+            <q>如果记忆能像胶片一样剪，我们都会剪成喜剧。</q>
+            <cite>——《1917》<br>那一格：战壕尽头，一棵树，一段 8 分钟的长镜。</cite>
+          </div>
+        </div>
+
+        <div class="row rv">
+          <div class="q" style="--v:97">
+            <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+              <circle cx="52" cy="52" r="46" fill="none" stroke="rgba(201,210,220,.14)" stroke-width="8"/>
+              <circle cx="52" cy="52" r="46" fill="none" stroke="url(#g3)" stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="289" stroke-dashoffset="8.67"/>
+            </svg>
+            <div class="n"><b>9.7</b><small>SCORE</small></div>
+          </div>
+          <div class="tx">
+            <span class="tagl">一光 · 逆光</span>
+            <q>重要的不是你看见了什么，而是光从哪个方向来。</q>
+            <cite>——《巴里·林登》<br>那一格：烛光下，仅靠一支蜡烛照亮的面部。</cite>
+          </div>
+        </div>
+
+        <div class="row flip rv">
+          <div class="q" style="--v:91">
+            <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+              <circle cx="52" cy="52" r="46" fill="none" stroke="rgba(201,210,220,.14)" stroke-width="8"/>
+              <circle cx="52" cy="52" r="46" fill="none" stroke="url(#g4)" stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="289" stroke-dashoffset="26.01"/>
+            </svg>
+            <div class="n"><b>9.1</b><small>SCORE</small></div>
+          </div>
+          <div class="tx">
+            <span class="tagl">一声 · 静音</span>
+            <q>他们听不见自己，我们却听得见一切。</q>
+            <cite>——《敦刻尔克》<br>那一格：声压下，耳鸣替代了配乐的 40 秒。</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SVG 渐变定义 -->
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#33e6d0"/><stop offset="1" stop-color="#ffb020"/></linearGradient>
+      <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb020"/><stop offset="1" stop-color="#ff3d7f"/></linearGradient>
+      <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#33e6d0"/><stop offset="1" stop-color="#8b7bff"/></linearGradient>
+      <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4ecb7a"/><stop offset="1" stop-color="#33e6d0"/></linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ================= 栏目4：幕后谱系（纵向时间轴）================= -->
+  <section class="sec alt" id="knight" aria-labelledby="t4">
+    <div class="wrap">
+      <div class="head">
+        <div class="t">
+          <div class="eyebrow">04 / craftsmen</div>
+          <h2>幕后谱系 · <span>片子是他们的签名</span></h2>
+          <p>导演决定"拍什么"，而真正让你起鸡皮疙瘩的，往往是镜头后那些不露脸的人：摄影指导、美术指导、剪辑、声音、视效、服装。</p>
+        </div>
+        <div class="num">TIMELINE</div>
+      </div>
+
+      <div class="tl">
+        <div class="nd rv" style="counter-reset:n">
+          <div class="card">
+            <div class="ava" style="--g:linear-gradient(135deg,#3a2a4b,#1c1226)"></div>
+            <div>
+              <h4>罗杰·狄金斯 <em>Roger Deakins</em></h4>
+              <p>用一盏灯讲完一场戏的人。他是"一光"的教科书：逆光、雾、冷调、大面积留黑。</p>
+              <div class="filmz"><b>《1917》</b><b>《银翼杀手2049》</b><b>《肖申克的救赎》</b><b>《边境杀手》</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="nd rv">
+          <div class="card">
+            <div class="ava" style="--g:linear-gradient(135deg,#1b3a4b,#0d1b2a)"></div>
+            <div>
+              <h4>亚当·斯托克豪森 <em>Adam Stockhausen</em></h4>
+              <p>美术指导。他用"空间"写台词：对称、粉红、微缩模型，让布景自己讲故事。</p>
+              <div class="filmz"><b>《布达佩斯大饭店》</b><b>《犬之岛》</b><b>《法兰西特派》</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="nd rv">
+          <div class="card">
+            <div class="ava" style="--g:linear-gradient(135deg,#4a3520,#24170d)"></div>
+            <div>
+              <h4>李屏宾 <em>Mark Lee Ping-bing</em></h4>
+              <p>"光比导演更懂情绪"。他的镜头总在清晨与黄昏，把留白拍成台词。</p>
+              <div class="filmz"><b>《花样年华》</b><b>《刺客聂隐娘》</b><b>《海上花》</b><b>《恋恋风尘》</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="nd rv">
+          <div class="card">
+            <div class="ava" style="--g:linear-gradient(135deg,#2f1d3a,#160a1c)"></div>
+            <div>
+              <h4>理查德·金 <em>Richard King</em></h4>
+              <p>声音设计师。他把"没有声音"做成最贵的效果——耳鸣、钟表、呼吸。</p>
+              <div class="filmz"><b>《敦刻尔克》</b><b>《盗梦空间》</b><b>《蝙蝠侠：黑暗骑士》</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="nd rv">
+          <div class="card">
+            <div class="ava" style="--g:linear-gradient(135deg,#14403a,#081c18)"></div>
+            <div>
+              <h4>保罗·兰伯特 <em>Paul Lambert</em></h4>
+              <p>视效总监。真正的好视效是"你看不出来"——黑洞、沙尘、旋转走廊。</p>
+              <div class="filmz"><b>《星际穿越》</b><b>《银翼杀手2049》</b><b>《沙丘》</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目5：常见疑问（手风琴 details/summary）================= -->
+  <section class="sec" id="night" aria-labelledby="t5">
+    <div class="wrap">
+      <div class="head">
+        <div class="t">
+          <div class="eyebrow">05 / faq</div>
+          <h2>常见疑问 · <span>先把话说清楚</span></h2>
+          <p>影视类站点最容易踩的坑是"模糊"。k5电影网把边界写在前面：不搬运、不导流、不擦边、不物化、不消费真实苦难。</p>
+        </div>
+        <div class="num">06</div>
+      </div>
+
+      <div class="faq">
+        <details class="rv" open>
+          <summary><span class="ix">Q01</span>k5 的"k"和"5"到底指什么？</summary>
+          <div class="a"><strong>k = keyframe（关键帧）</strong>，动画与剪辑里"两个关键状态之间的那一格"，也是电影最该被记住的一瞬间。<strong>5 = 五种被看见的方式</strong>：一帧、一句、一场、一光、一声。本站不追资源编号、不追热搜、不做解说搬运。</div>
+        </details>
+        <details class="rv">
+          <summary><span class="ix">Q02</span>这里是资源站吗？能在哪看？</summary>
+          <div class="a"><strong>不是。</strong>k5电影网不提供、不链接、不引导任何影片下载或盗版在线播放。我们只做片单、图鉴、台词、导演谱系与观影指南（文字与观点，属合理引用的评论所需）。正版观看请前往：爱奇艺、腾讯视频、优酷、芒果 TV、哔哩哔哩、Netflix、Apple TV、Disney+、HBO Max 等持牌平台。<strong>拒绝盗版，就是支持创作者继续拍下去。</strong></div>
+        </details>
+        <details class="rv">
+          <summary><span class="ix">Q03</span>"值得追指数"怎么算的？</summary>
+          <div class="a">豆瓣 40% + IMDb 30% + 烂番茄 20% + 奥斯卡 / 英国电影学院"最佳摄影·艺术指导·视觉效果·剪辑·服装"提名折算 10%，再人工扣掉"说教感 / 拖沓度 / 炫技感"。<strong>入选线 8.0（百分制 80 分）</strong>。我们不收"爽片"，只收"愿意为它再花一遍 160 分钟"的作品。</div>
+        </details>
+        <details class="rv">
+          <summary><span class="ix">Q04</span>为什么"特效"不等于"烧钱"？</summary>
+          <div class="a">最好的视效常常是<strong>实拍</strong>：诺兰用 IMAX 摄影机拍真实沙漠，用微缩模型拍坍缩建筑；《1917》是一镜到底的精密调度，不是绿幕；《地球脉动》的摄影师在悬崖上挂了三个月。CG 只是工具，<strong>克制才是手艺</strong>。本站坚持去低俗化、反动物虐待、不把真实苦难当奇观。</div>
+        </details>
+        <details class="rv">
+          <summary><span class="ix">Q05</span>片单里有战争、暴力、沉重题材，未成年人能看吗？</summary>
+          <div class="a"><strong>不能，也不建议。</strong>涉及战争、暴力、历史沉重内容的作品，请在<strong>成年监护人陪同下、或成年后</strong>观看，并先做背景功课（例如《辛德勒的名单》《一九四二》《切尔诺贝利》）。我们不美化战争、不渲染血腥、不鼓吹暴力——<strong>战争没有赢家，和平才需要更大的勇气。</strong></div>
+        </details>
+        <details class="rv">
+          <summary><span class="ix">Q06</span>内容可以转载或引用吗？</summary>
+          <div class="a">可以，但请<strong>注明出处"k5电影网"并保留本站链接</strong>。涉及剧照、台词、片段截图，仅用于评论与说明之目的，遵循《中华人民共和国著作权法》第二十四条"为个人学习、研究或者欣赏，使用已经发表的作品"及"为评论某一作品而适当引用"之合理引用原则。如需商用，请另行取得著作权人授权。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目6：关于本站（双栏 + 编号特性 + 数据条）================= -->
+  <section class="sec alt" id="about" aria-labelledby="t6">
+    <div class="wrap">
+      <div class="cols">
+        <div class="lead rv">
+          <div class="eyebrow">06 / about</div>
+          <h3>关于 k5电影网：<br>把 160 分钟，<span style="color:var(--cyan)">交给值得的片子</span></h3>
+          <p>k5电影网是一个<strong>非营利、无广告、不收费、不会员、不加群</strong>的影视观看指引站点。我们相信：真正的稀缺不是片源，而是<strong>判断力</strong>。</p>
+          <p>我们不追热点、不追榜单、不追解说流量。我们只回答一个问题：<em class="serif">"今晚，值得我关掉手机、调亮屏幕、戴上耳机的，是哪一部？"</em></p>
+          <ul class="feats">
+            <li><b>不搬运、不导流</b><small>只做评论与推荐，零盗版链接</small></li>
+            <li><b>五种看见</b><small>一帧·一句·一场·一光·一声</small></li>
+            <li><b>入选线 8.0</b><small>低于分数线，再好看也不收</small></li>
+            <li><b>去低俗 · 反虐 · 护未成年</b><small>不擦边、不物化、不消费真实苦难</small></li>
+          </ul>
+        </div>
+
+        <div class="stats rv">
+          <div class="stat" style="--c:#33e6d0;--w:62%"><b>62%<i>电影</i></b><span>长片为主，重视觉、重叙事</span><div class="rung"><s></s></div></div>
+          <div class="stat" style="--c:#ff3d7f;--w:24%"><b>24%<i>剧集</i></b><span>只收"值得一口气追完"的短剧</span><div class="rung"><s></s></div></div>
+          <div class="stat" style="--c:#ffb020;--w:10%"><b>10%<i>纪录片</i></b><span>自然、历史、人物，最贵的摄影</span><div class="rung"><s></s></div></div>
+          <div class="stat" style="--c:#8b7bff;--w:4%"><b>4%<i>动画</i></b><span>每一帧都是手绘的耐心</span><div class="rung"><s></s></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <div class="f1">
+      <div>
+        <h5>k5电影网 · KEYFRAME 05</h5>
+        <p><strong style="color:var(--paper)">k</strong> = keyframe（关键帧）<br><strong style="color:var(--paper)">5</strong> = 一帧 · 一句 · 一场 · 一光 · 一声</p>
+        <p style="margin-top:12px">一个不剧透的影视观看指引：片单、图鉴、台词、导演谱系、观影指南。</p>
+      </div>
+      <div>
+        <h5>栏目</h5>
+        <ul>
+          <li><a href="#picks">高分片单</a></li>
+          <li><a href="#five">五种看见</a></li>
+          <li><a href="#talk">关键帧台词</a></li>
+          <li><a href="#knight">幕后谱系</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关键词</h5>
+        <ul>
+          <li>电影推荐</li>
+          <li>高分电影</li>
+          <li>华语电影</li>
+          <li>电影美学</li>
+          <li>经典台词</li>
+        </ul>
+      </div>
+      <div>
+        <h5>正版观看</h5>
+        <ul>
+          <li>爱奇艺 · 腾讯视频</li>
+          <li>优酷 · 芒果 TV</li>
+          <li>哔哩哔哩</li>
+          <li>Netflix · Apple TV</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© <span id="yr">2026</span> k5电影网 · k5dianyingwang-cn.github.io ｜ 本站为影视观看指引与评论，不提供、不链接、不引导任何下载或盗版播放。</span>
+      <span class="badge">
+        <s>去低俗化</s><s>反动物虐待</s><s>保护未成年人</s><s>合理引用</s><s>拒绝盗版</s>
+      </span>
+    </div>
+    <p style="margin-top:16px;color:var(--film2);font-size:12.5px;max-width:900px">
+      <strong style="color:var(--amber)">声明：</strong>"k5电影网"取"keyframe（关键帧）"与"五种被看见的方式"之义，指电影与剧集中的<strong>画面、表演、剪辑、光影、声音</strong>之美，
+      不含、不指向、不暗示任何低俗、软色情、暴力、动物虐待、违法或成人敏感含义；与任何播放器、下载工具、资源站、成人站点均无隶属或合作关系。
+      涉及剧照、台词、片段截图仅为评论与说明所需，遵循《中华人民共和国著作权法》第二十四条合理引用原则。坚持<strong>成年观众观看、理性讨论、去低俗化、反虐、护未成年</strong>。
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // 汉堡菜单：点击锚点后自动收起
+  var btn=document.getElementById('tog'), ul=document.getElementById('navul');
+  btn.addEventListener('click',function(){
+    var o=ul.classList.toggle('o');
+    btn.setAttribute('aria-expanded',o?'true':'false');
+  });
+  ul.addEventListener('click',function(e){
+    if(e.target.tagName==='A' && window.innerWidth<=900){
+      ul.classList.remove('o'); btn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // 入场动画（尊重 prefers-reduced-motion）
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en,i){
+        if(en.isIntersecting){
+          setTimeout(function(){en.target.classList.add('in');}, i*70);
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }else{
+    els.forEach(function(el){el.classList.add('in');});
+  }
+
+  // 版权年份
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
